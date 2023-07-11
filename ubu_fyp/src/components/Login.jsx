@@ -9,7 +9,7 @@ const Login = () => {
     }
 
     const [showUser , setShowUser] = useState(false)
-    const [userName , setUserName] = useState("")
+    const [userNameDB , setUserNameDB] = useState("")
 
 
     const getToken = () => {
@@ -33,7 +33,7 @@ const Login = () => {
           if(res.data.status == 'failed'){
             setShowUser(false)
           }else if (res.data.status == 'success'){
-            setUserName(res.data.user.name)
+            setUserNameDB(res.data.user.name)
             setShowUser(true)
           }
 
@@ -76,7 +76,6 @@ const Login = () => {
         try {
             if (userName) {
 
-
                 let url = "http://localhost:8000/api/user/login"
                 const res = await axios.post(url, {
                     "email": userName,
@@ -104,7 +103,7 @@ const Login = () => {
     return (
         <div className="w-full max-w-md mx-auto mt-16">
 
-            { showUser == true ? (<div style={{ height: '60vh' , display: 'flex' , alignItems:'center' , justifyContent:'center' , flexDirection: 'column' }} ><h1 className="text-base font-bold my-4">Hye! {userName} </h1>
+            { showUser == true ? (<div style={{ height: '60vh' , display: 'flex' , alignItems:'center' , justifyContent:'center' , flexDirection: 'column' }} ><h1 className="text-base font-bold my-4">Hye! {userNameDB} </h1>
             <button style={{ padding: 5 , color: 'red' , border: '2px solid black' , borderRadius: '10px' }} onClick={handleLogOut} >Logout</button>
             </div> ) : (<form className="shadow-md rounded px-8 pt-6 pb-8 mb-4 text-center bg-gray-500 text-gray-100">
                 <h1 className="text-base font-bold my-4">VEHICLE MANAGEMENT SYSTEM</h1>

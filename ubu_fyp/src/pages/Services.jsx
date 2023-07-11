@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 import axios from 'axios'
 
 const Services = () => {
-
+// const [varibale , functionToSet] = useState()
     const [errorStatus , setErrorStatus ] = useState({
         status: false,
         color: 'green',
@@ -52,6 +52,7 @@ const Services = () => {
             if(name , department , type , rate , date , destination , pickup , reason , email , mobile){
                 let token = getToken()
                 let url = "http://localhost:8000/api/vehicle/add";
+                // axios.post()
             const response = await axios.post(url , formData , {
                 headers: {
                   "Content-Type": "application/json",
@@ -87,7 +88,6 @@ const Services = () => {
 
         }
     }
-
     return (
         <div>
             <Navbar />
